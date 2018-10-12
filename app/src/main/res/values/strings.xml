@@ -1,3 +1,12 @@
 <resources>
     <string name="app_name">Droidoku</string>
+    <string name="startNewGame">Start New Game</string>
+    <string name="settings">Settings</string>
+    <string name="about">About</string>
+    <string name="loadGame">Load Game</string>
+    <string name="version">Version: 0.1</string>
+    <string name="developer_name">Andreas Hammer Håversen</string>
+    <string name="dev_name">TextView</string>
+    <string name="Version">TextView</string>
+    <string name="logo_for_lamda">Logo for Lamda</string>
 </resources>

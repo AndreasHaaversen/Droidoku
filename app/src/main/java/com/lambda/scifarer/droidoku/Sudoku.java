@@ -7,9 +7,10 @@ import java.util.Stack;
 
 public class Sudoku {
 
-    Board board;
+    private Board board;
     private ActionStack stack;
     //private SudokuStorage storage;
+
     //This is just for testing purposes
     private List<String> boards = Arrays.asList("....");
 
@@ -30,7 +31,7 @@ public class Sudoku {
         } else {
             List<String> toRun;
             toRun = Arrays.asList(input.split(""));
-            Stack<String> output = new Stack<String>();
+            Stack<String> output = new Stack<>();
             for (int i = (toRun.size() - 1); i > -1; i--) {
                 output.push(toRun.get(i));
             }
