@@ -1,5 +1,8 @@
 package com.lambda.scifarer.droidoku;
 
+import android.util.Log;
+
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Random;
@@ -12,7 +15,7 @@ public class Sudoku {
     //private SudokuStorage storage;
 
     //This is just for testing purposes
-    private List<String> boards = Arrays.asList("....");
+    private List<String> boards = Arrays.asList(".4.59271..95.7836...7..4...6382.1.4..5296...1.1..83.56..1..6.95.2...56...6.74.1..");
 
     public Sudoku(int size) {
         Random random = new Random();
@@ -30,11 +33,12 @@ public class Sudoku {
             throw new IllegalArgumentException("String cannot be empty");
         } else {
             List<String> toRun;
-            toRun = Arrays.asList(input.split(""));
+            toRun = Arrays.asList(input.trim().split(""));
             Stack<String> output = new Stack<>();
-            for (int i = (toRun.size() - 1); i > -1; i--) {
+            for (int i = (toRun.size() - 1); i > 0; i--) {
                 output.push(toRun.get(i));
             }
+            Log.d("Debugging", output.toString());
             return output;
         }
     }
@@ -67,6 +71,10 @@ public class Sudoku {
     public void redo() {
         String action = stack.redoAction() + "a";
         getInput(action);
+    }
+
+    ArrayList<String> getGameArray() {
+        return this.board.getGameArray();
     }
 
     /*public void load(String fileName) {

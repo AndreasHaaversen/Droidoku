@@ -12,7 +12,7 @@ public class Board {
 
     public Board(int rows, int columns, Stack<String> input) {
         if(rows != columns) {
-            throw new IllegalArgumentException("Illegal board dimmensions");
+            throw new IllegalArgumentException("Illegal board dimensions");
         }
         this.rows = rows;
         this.columns = columns;
@@ -20,7 +20,7 @@ public class Board {
         this.rightRoot = roots.get(0);
         this.downRoot = roots.get(1);
         if (rows * columns != input.size()) {
-            throw new IllegalArgumentException("Stack is of insufficient length");
+            throw new IllegalArgumentException("Stack is of insufficient length. Stack had length " + input.size() + ", should have been " + (rows * columns) + ".");
         }
         for (int i = 0; i < rows; i++) {
             board.add(new ArrayList<Pos>());
@@ -137,7 +137,7 @@ public class Board {
 
     private static List<Integer> primeFactors(int number) {
         int n = number;
-        List<Integer> factors = new ArrayList<Integer>();
+        List<Integer> factors = new ArrayList<>();
         for (int i = 2; i <= n; i++) {
             while (n % i == 0) {
                 factors.add(i);
@@ -158,6 +158,16 @@ public class Board {
                 out += getPos(i, j).getValue();
             }
             out += "\n";
+        }
+        return out;
+    }
+
+    protected ArrayList<String> getGameArray() {
+        ArrayList<String> out = new ArrayList<>();
+        for (int i = 0; i < this.rows; i++) {
+            for (int j = 0; j < this.columns; j++) {
+                out.add(this.getPos(i, j).getValue());
+            }
         }
         return out;
     }
