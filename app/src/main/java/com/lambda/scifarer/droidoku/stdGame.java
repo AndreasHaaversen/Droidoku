@@ -27,7 +27,8 @@ public class stdGame extends AppCompatActivity {
         int size = getIntent().getIntExtra("BOARDSIZE", 9);
         int difficulty = getIntent().getIntExtra("DIFFICULTY", 25);
 
-        this.game = new Sudoku(size);
+        SudokuGenerator generator = new SudokuGenerator(size);
+        this.game = new Sudoku(size, generator.generate(difficulty, SudokuGenerator.DEFAULT_PATIENCE));
 
         GridView gridView = findViewById((R.id.gridview));
 

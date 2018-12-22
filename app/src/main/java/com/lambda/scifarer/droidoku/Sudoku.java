@@ -5,7 +5,6 @@ import android.util.Log;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-import java.util.Random;
 import java.util.Stack;
 
 public class Sudoku {
@@ -14,13 +13,8 @@ public class Sudoku {
     private ActionStack stack;
     //private SudokuStorage storage;
 
-    //This is just for testing purposes
-    private List<String> boards = Arrays.asList(".4.59271..95.7836...7..4...6382.1.4..5296...1.1..83.56..1..6.95.2...56...6.74.1..");
-
-    public Sudoku(int size) {
-        Random random = new Random();
-        String inputString = boards.get(random.nextInt(boards.size()));
-        Stack<String> inputStack = toStack(inputString);
+    public Sudoku(int size, String board) {
+        Stack<String> inputStack = toStack(board);
         this.board = new Board(size, size, inputStack);
         this.stack = new ActionStack();
         //this.storage = new SudokuStorage(this);
