@@ -24,11 +24,12 @@ public class stdGame extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_std_game);
+        int size = getIntent().getIntExtra("BOARDSIZE", 9);
+        int difficulty = getIntent().getIntExtra("DIFFICULTY", 25);
 
-        this.game = new Sudoku(9);
+        this.game = new Sudoku(size);
 
         GridView gridView = findViewById((R.id.gridview));
-        final TextView cell_content = findViewById((R.id.cell_content));
 
         final ArrayList<String> contents = game.getGameArray();
 
@@ -48,7 +49,7 @@ public class stdGame extends AppCompatActivity {
                 RelativeLayout.LayoutParams params = (RelativeLayout.LayoutParams) textView.getLayoutParams();
 
                 // Set the width of TextView widget (item of GridView)
-                params.width = getPixelsFromDPs(stdGame.this, 168);
+                params.width = getPixelsFromDPs(stdGame.this, 50);
 
                 // Set the TextView layout parameters
                 textView.setLayoutParams(params);
