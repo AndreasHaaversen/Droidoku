@@ -13,9 +13,10 @@ import java.util.List;
 public class setup_game extends AppCompatActivity {
 
     private SeekBar SizeBar, DifficultyBar;
-    private int size = 9, difficulty = 25;
+    private int size = 2, difficulty = 1;
     private TextView SizeText, DifficultyText;
-    private List<Integer> validValues = Arrays.asList(2, 4, 9, 12, 16);
+    private List<Integer> validSizes = Arrays.asList(2, 4, 9, 16);
+    private List<String> difficulties = Arrays.asList("Easy", "Medium", "Hard");
 
 
     @Override
@@ -24,16 +25,15 @@ public class setup_game extends AppCompatActivity {
         setContentView(R.layout.activity_setup_game);
 
         SizeBar = findViewById(R.id.SizeSeekBar);
+        SizeBar.setMax(validSizes.size() - 1);
         SizeBar.setProgress(size);
         SizeText = findViewById(R.id.SizeText);
-        SizeText.setText("Size: " + size);
+        SizeText.setText("Size: " + validSizes.get(size));
         SizeBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
             @Override
             public void onProgressChanged(SeekBar seekBar, int i, boolean b) {
-                if (validValues.contains(i)) {
-                    SizeText.setText("Size: " + i);
-                    size = i;
-                }
+                SizeText.setText("Size: " + validSizes.get(i));
+                size = validSizes.get(i);
             }
 
             @Override
@@ -48,12 +48,14 @@ public class setup_game extends AppCompatActivity {
 
         DifficultyBar = findViewById(R.id.DifficultySeekBar);
         DifficultyBar.setProgress(difficulty);
+        DifficultyBar.setMax(difficulties.size() - 1);
         DifficultyText = findViewById(R.id.DifficultyText);
-        DifficultyText.setText("Difficulty: " + difficulty);
+        DifficultyText.setText("Difficulty: " + difficulties.get(1));
         DifficultyBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
             @Override
             public void onProgressChanged(SeekBar seekBar, int i, boolean b) {
-                DifficultyText.setText("Difficulty: " + i);
+                String text = "Difficulty: " + difficulties.get(i);
+                DifficultyText.setText(text);
                 difficulty = i;
             }
 

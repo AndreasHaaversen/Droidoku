@@ -25,7 +25,7 @@ public class stdGame extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_std_game);
         int size = getIntent().getIntExtra("BOARDSIZE", 9);
-        int difficulty = getIntent().getIntExtra("DIFFICULTY", 25);
+        int difficulty = getIntent().getIntExtra("DIFFICULTY", 2);
 
         SudokuGenerator generator = new SudokuGenerator(size);
         this.game = new Sudoku(size, generator.generate(difficulty, SudokuGenerator.DEFAULT_PATIENCE));

@@ -5,6 +5,10 @@ import java.util.Random;
 
 public class SudokuGenerator extends SudokuSolver {
 
+    private static final int EASY = 0;
+    private static final int MEDIUM = 1;
+    private static final int HARD = 2;
+
     public static final int DEFAULT_PATIENCE = 50;
 
     public SudokuGenerator(int size) {
@@ -13,6 +17,7 @@ public class SudokuGenerator extends SudokuSolver {
 
     public String generate(int difficulty, int patience) {
         boolean satisfied = false;
+        int holes = getNumHoles(difficulty);
         while (!satisfied) {
             for (int i = 0; i < size; i++) {
                 for (int j = 0; j < size; j++) {
@@ -21,7 +26,7 @@ public class SudokuGenerator extends SudokuSolver {
             }
 
             generateSudoku();
-            satisfied = makeHoles(difficulty, patience);
+            satisfied = makeHoles(holes, patience);
         }
         StringBuilder out = new StringBuilder();
         for (int i = 0; i < size; i++) {
@@ -63,6 +68,67 @@ public class SudokuGenerator extends SudokuSolver {
             }
         }
         return true;
+    }
+
+    private int getNumHoles(int difficulty) {
+        int out = 0;
+        if (size == 2) switch (difficulty) {
+            case (EASY):
+                out = 1;
+                break;
+            case (MEDIUM):
+                out = 2;
+                break;
+            case (HARD):
+                out = 3;
+                break;
+            default:
+                out = 0;
+                break;
+        }
+        else if (size == 4) switch (difficulty) {
+            case (EASY):
+                out = 5;
+                break;
+            case (MEDIUM):
+                out = 7;
+                break;
+            case (HARD):
+                out = 9;
+                break;
+            default:
+                out = 0;
+                break;
+        }
+        else if (size == 9) switch (difficulty) {
+            case (EASY):
+                out = 45;
+                break;
+            case (MEDIUM):
+                out = 50;
+                break;
+            case (HARD):
+                out = 55;
+                break;
+            default:
+                out = 0;
+                break;
+        }
+        else if (size == 16) switch (difficulty) {
+            case (EASY):
+                out = 88;
+                break;
+            case (MEDIUM):
+                out = 108;
+                break;
+            case (HARD):
+                out = 128;
+                break;
+            default:
+                out = 0;
+                break;
+        }
+        return out;
     }
 
     private boolean removeAndTestPair(int x1, int y1, int x2, int y2) {
