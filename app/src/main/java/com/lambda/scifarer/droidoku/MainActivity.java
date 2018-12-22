@@ -19,7 +19,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void openNewGame(View view) {
-        Intent intent = new Intent(this, stdGame.class);
+        Intent intent = new Intent(this, setup_game.class);
         startActivity(intent);
     }
 }

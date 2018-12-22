@@ -9,4 +9,7 @@
     <string name="dev_name">TextView</string>
     <string name="Version">TextView</string>
     <string name="logo_for_lamda">Logo for Lamda</string>
+    <string name="board_size">Board size:</string>
+    <string name="difficulty">Difficulty</string>
+    <string name="startGame">Start Game</string>
 </resources>
